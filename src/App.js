@@ -34,6 +34,18 @@ function App() {
     fetchImages();
   }, []);
 
+  useEffect(() => {
+    const event = window.addEventListener("scroll", () => {
+      if (
+        !isLoading &&
+        window.innerHeight + window.scrollY >= document.body.scrollHeight - 5
+      ) {
+        console.log("it works!");
+      }
+    });
+    return () => window.removeEventListener("scroll", event);
+  }, []);
+
   return (
     <main>
       <section className="search">
